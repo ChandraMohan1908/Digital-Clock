@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<title>Digital Clock</title>
+</head>
+<body>
+
+  <h1>Digital Clock</h1>
+    <div class="container">
+        <div class="clock">
+          <div class="time" id="hour">00</div>
+          <div class="time">:</div>
+          <div class="time" id="minute">00</div>
+          <div class="time">:</div>
+          <div class="time" id="second">00</div>
+          <div class="time" id="ampm">AM</div>
+        </div>
+      </div>
+
+<style>
+body {
+  margin: 0;
+  padding: 0;
+  background-image: url("lambo.jpg"); 
+  background-attachment: fixed;
+  background-size: cover;
+  background-position: center;
+  font-family: Arial, sans-serif;
+  color: white;
+  overflow: hidden;
+}
+
+h1{
+  font-family: cursive;
+text-align: center;
+font-size: 60px;
+padding-top: 240px;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.clock {
+  display: flex;
+  font-size: 2em;
+}
+
+.time {
+  margin: 0 5px;
+  padding: 50px;
+  border: 2px solid white;
+  border-radius: 5px;
+  background-color: rgba(0, 0, 0, 0.5); 
+  backdrop-filter: blur(5px);
+}
+
+</style>
+<script>
+   function updateClock() {
+  var now = new Date();
+  var hour = now.getHours();
+  var ampm = hour >= 12 ? 'PM' : 'AM';
+  hour = hour % 12;
+  hour = hour ? hour : 12;
+  var minute = now.getMinutes();
+  var second = now.getSeconds();
+  hour = (hour < 10) ? "0" + hour : hour;
+  minute = (minute < 10) ? "0" + minute : minute;
+  second = (second < 10) ? "0" + second : second;
+  document.getElementById("hour").innerText = hour;
+  document.getElementById("minute").innerText = minute;
+  document.getElementById("second").innerText = second;
+  document.getElementById("ampm").innerText = ampm;
+}
+setInterval(updateClock, 1000);
+</script>
+</body>
+</html>
